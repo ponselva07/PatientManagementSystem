@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PatientManagementSystem';
+  searchText:string;
+  searchPatient(){
+    console.log(this.searchText);
+  }
 }

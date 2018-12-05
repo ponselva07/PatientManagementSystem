@@ -1,0 +1,123 @@
+<div align="center">
+    <div class="container" style="width: 50%">
+        <div class="row">
+            <div class="col-md-10">
+                <h3>Patient Registration Form</h3>
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
+                <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+                        <!--<div class="row">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+                                <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                                    <div *ngIf="firstName.errors.required">First Name is required</div>
+                                </div>
+                            </div>-->
+                    <div class="row">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" name="firstName" ngModel #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+                        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                            <div *ngIf="firstName.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" name="lastName" ngModel #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+                        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                            <div *ngIf="lastName.errors.required">Last Name is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <label for="dob">Date Of Birth</label>
+                            <input type="date" class="form-control" name="dob" ngModel #dob="ngModel" [ngClass]="{ 'is-invalid': f.submitted && dob.invalid }" required />
+                            <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                                <div *ngIf="lastName.errors.required">Date of birth is required</div>
+                            </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                      <div class="form-check" style="margin-right: 2%">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="gender">Male
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="gender">Female
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" ngModel #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+                        <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" class="form-control" name="phoneNumber" ngModel #phoneNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phoneNumber.invalid }" required email />
+                        <div *ngIf="f.submitted && phoneNumber.invalid" class="invalid-feedback">
+                            <div *ngIf="phoneNumber.errors.required">Phone Number is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="bloodGroup" style="margin-right: 2%">Blood Group</label>
+                        <select class="form-control" name="bloodGroup" ngModel #bloodGroup="ngModel" [ngClass]="{ 'is-invalid': f.submitted && bloodGroup.invalid }" required>
+                                <option>A Positive</option>
+                                <option>A Negative</option>
+                                <option>B Positive</option>
+                                <option>B Negative</option>
+                                <option>AB Positive</option>
+                                <option>AB Negative</option>
+                                <option>O Positive</option>
+                                <option>O Negative</option>
+                                <option>Unknown</option>
+                        </select>
+                        <div *ngIf="f.submitted && bloodGroup.invalid" class="invalid-feedback">
+                            <div *ngIf="bloodGroup.errors.required">Blood group is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" name="address" ngModel #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required />
+                        <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+                            <div *ngIf="address.errors.required">Address is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="doctorName">Doctor Name</label>
+                        <input type="text" class="form-control" name="doctorName" ngModel #doctorName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && doctorName.invalid }" required />
+                        <div *ngIf="f.submitted && doctorName.invalid" class="invalid-feedback">
+                            <div *ngIf="doctorName.errors.required">Doctor Name is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="diagnosis">Diagnosis</label>
+                        <input type="text" class="form-control" name="diagnosis" ngModel #diagnosis="ngModel"/>
+                    </div>
+                    <!--<div class="row">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" ngModel #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+                        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" name="confirmPassword" ngModel #confirmPassword="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirmPassword.invalid }" required />
+                        <div *ngIf="f.submitted && confirmPassword.invalid" class="invalid-feedback">
+                            <div *ngIf="confirmPassword.errors.required">Confirm Password is required</div>
+                            <div *ngIf="confirmPassword.errors.mustMatch">Passwords must match</div>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <br/>
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

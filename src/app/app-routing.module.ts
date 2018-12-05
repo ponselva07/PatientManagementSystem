@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PatientComponent } from './components/patient/patient.component';
+import { AddpatientComponent } from './components/addpatient/addpatient.component';
+import { PatientlistComponent } from './components/patientlist/patientlist.component';
+import { AdddoctorComponent } from './components/adddoctor/adddoctor.component';
+import { DoctorlistComponent } from './components/doctorlist/doctorlist.component';
+import { ReportComponent } from './components/report/report.component';
 
 const routes: Routes = [
-  {path: "**",component: PatientComponent}
+  {path: "patientList",component: PatientlistComponent},
+  {path: "addPatient",component: AddpatientComponent},
+  {path: "addDoctor",component: AdddoctorComponent},
+  {path: "doctorList",component: DoctorlistComponent},
+  {path: "report",component: ReportComponent},
+  {path: "**",redirectTo:"/patientList",pathMatch:"full"}
 ];
 
 @NgModule({

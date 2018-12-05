@@ -1,0 +1,56 @@
+<p></p>
+<div class="row">
+    <h6 class="pb-2 mb-0">Doctor Informations</h6>
+    <input [(ngModel)]="searchText" placeholder="Search" class="form-control mr-sm-2">
+</div>
+<p></p>
+    <table class="table table-bordered table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Doctor Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Specialization</th>
+          <th scope="col">Created On</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--<tr *ngFor="let item of pagedItems | patientfilter: {patientId: searchText, 
+            patientName:searchText}; let i=index;">-->
+        <tr *ngFor="let item of pagedItems | patientfilter: {patientId: searchText, 
+            patientName:searchText,gender:searchText,dob:searchText,
+            phoneNumber:searchText,email:searchText,address:searchText,
+            createdDate:searchText,doctorName:searchText,diagnosis:searchText}; let i=index;">
+          <td>{{item.patientId}}</td>
+          <td>{{item.patientName}}</td>
+          <td>{{item.gender}}</td>
+          <td>{{item.dob}}</td>
+          <td>{{item.phoneNumber}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.createdDate}}</td>
+          <td><img src="./assets/diagnosis.png"/></td>
+      </tbody>
+    </table>
+    <div class="container">   
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                <a class="page-link" (click)="setPage(1)">First</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+            </li>
+            <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a class="page-link" (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+            </li>
+        </ul>
+    </div>
+           
