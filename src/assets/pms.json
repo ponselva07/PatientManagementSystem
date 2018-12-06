@@ -12,8 +12,7 @@
       "address": "Salem",
       "specialization": "General",
       "doctorName": "Gunasekaran",
-      "diagnosis": "Vertigo",
-      "createdDate": "2018-12-06"
+      "diagnosis": "Vertigo","createdDate": "2018-12-06"
     },
     {
       "id": 4,

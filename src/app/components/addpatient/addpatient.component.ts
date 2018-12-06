@@ -24,9 +24,10 @@ export class AddpatientComponent implements OnInit {
   }
 
   onSubmit(regForm:NgForm){
+    this.patient=regForm.value as IPatient;
     console.log("regForm.value "+regForm.value);
-    if(this.patient.id <= 0){
-      this.httpClient.post("http://127.0.0.1:3000/patientList",regForm.value)
+    if(this.patient.id <= 0 || this.patient.id == undefined){
+      this.httpClient.post("http://127.0.0.1:3000/patientList",this.patient)
       .subscribe(
           data => {
               console.log("Patient Information Created Succussfully ", data);
