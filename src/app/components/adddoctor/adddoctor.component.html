@@ -28,6 +28,16 @@
                     </div>
                     <br/>
                     <div class="row">
+                        <label for="gender" style="margin-right: 2%">Gender</label>
+                        <select class="form-control" name="gender" ngModel #gender="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gender.invalid }" required>
+                                <option>Male</option>
+                                <option>Female</option>
+                        </select>
+                        <div *ngIf="f.submitted && gender.invalid" class="invalid-feedback">
+                            <div *ngIf="gender.errors.required">Gender is required</div>
+                        </div>
+                    </div>
+                    <!--<div class="row">
                       <div class="form-check" style="margin-right: 2%">
                         <label class="form-check-label">
                           <input type="radio" class="form-check-input" name="gender">Male
@@ -38,7 +48,7 @@
                           <input type="radio" class="form-check-input" name="gender">Female
                         </label>
                       </div>
-                    </div>
+                    </div>-->
                     <div class="row">
                         <label for="phoneNumber">Phone Number</label>
                         <input type="text" class="form-control" name="phoneNumber" ngModel #phoneNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phoneNumber.invalid }" required email />

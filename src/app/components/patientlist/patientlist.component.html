@@ -1,4 +1,5 @@
 <p></p>
+<div class="container-fluid">
 <div class="row">
     <h6 class="pb-2 mb-0">Patient Informations</h6>
     <input [(ngModel)]="searchText" placeholder="Search" class="form-control mr-sm-2">
@@ -8,15 +9,18 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">Patient Id</th>
-          <th scope="col">Patient Name</th>
-          <th scope="col">Gender</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
           <th scope="col">Date of Birth</th>
+          <th scope="col">Gender</th>
           <th scope="col">Phone Number</th>
           <th scope="col">Email</th>
+          <th scope="col">Blood Group</th>
           <th scope="col">Address</th>
-          <th scope="col">Created On</th>
+          <th scope="col">Specialization</th>
           <th scope="col">Doctor Name</th>
           <th scope="col">Diagnosis</th>
+          <th scope="col">Created On</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -24,22 +28,30 @@
         <!--<tr *ngFor="let item of pagedItems | patientfilter: {patientId: searchText, 
             patientName:searchText}; let i=index;">-->
         <tr *ngFor="let item of pagedItems | patientfilter: {patientId: searchText, 
-            patientName:searchText,gender:searchText,dob:searchText,
-            phoneNumber:searchText,email:searchText,address:searchText,
-            createdDate:searchText,doctorName:searchText,diagnosis:searchText}; let i=index;">
+            firstName:searchText,lastName:searchText,dob:searchText,gender:searchText,
+            phoneNumber:searchText,email:searchText,bloodGroup:searchText,address:searchText,
+            specialization:searchText,doctorName:searchText,diagnosis:searchText, createdDate:searchText};
+            let i=index;">
           <td>
-           {{item.patientId}}
+           {{item.id}}
           </td>
-          <td>{{item.patientName}}</td>
-          <td>{{item.gender}}</td>
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
           <td>{{item.dob}}</td>
+          <td>{{item.gender}}</td>
           <td>{{item.phoneNumber}}</td>
           <td>{{item.email}}</td>
+          <td>{{item.bloodGroup}}</td>
           <td>{{item.address}}</td>
-          <td>{{item.createdDate}}</td>
+          <td>{{item.specialization}}</td>
           <td>{{item.doctorName}}</td>
           <td>{{item.diagnosis}}</td>
-          <td><img src="./assets/diagnosis.png"/></td>
+          <td>{{item.createdDate}}</td>
+          <td>
+              <img name="Diagnosis" width="15" class="pointer" src="./assets/diagnosis.png"/>
+              <img name="Edit" width="14" class="pointer" src="./assets/edit.png" (click)="editPatient(item)" />
+              <img name="Delete" width="15" class="pointer" src="./assets/delete.png" (click)="deletePatient(item)"/>
+           </td>
           <!--<td>{{employee.createdAt | date:'yyyy/MM/dd'}}</td>
           <td>
             <button (click)="delete(employee)" class="btn btn-danger btn-sm">
@@ -71,3 +83,4 @@
             </li>
         </ul>
     </div>
+</div>
