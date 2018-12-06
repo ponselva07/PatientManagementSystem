@@ -7,8 +7,11 @@ export class PatientService {
 
   constructor() { }
 
-  getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
+  getPager(totalItems: number, currentPage: number = 1, pageSize: number) {
     // calculate total pages
+    if(pageSize <=0 || pageSize == null || pageSize == undefined){
+        pageSize=10;
+    }
     let totalPages = Math.ceil(totalItems / pageSize);
 
     // ensure current page isn't out of range

@@ -1,7 +1,23 @@
-<p></p>
+<h6 class="pb-2 mb-0">Doctor Informations</h6>
 <div class="row">
-    <h6 class="pb-2 mb-0">Doctor Informations</h6>
-    <input [(ngModel)]="searchText" placeholder="Search" class="form-control mr-sm-2">
+    <br>
+    <table>
+        <tr>
+            <td><label style="margin-right: 10px;margin-left: 10px">Show</label></td>
+            <td><select class="form-control" name="noOfItems" (change)="changeNoOfItemsShowPerPage()">
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+            </select></td>
+            <td><label style="margin-right: 10px">Items</label></td>
+            <td><input [(ngModel)]="searchText" placeholder="Search" class="form-control mr-sm-2"></td>
+        </tr>
+    </table>
+</div>
+<div class="row">
+   
 </div>
 <p></p>
     <table class="table table-bordered table-sm">
@@ -20,18 +36,21 @@
       <tbody>
         <!--<tr *ngFor="let item of pagedItems | patientfilter: {patientId: searchText, 
             patientName:searchText}; let i=index;">-->
-        <tr *ngFor="let item of pagedItems | patientfilter: {patientId: searchText, 
-            patientName:searchText,gender:searchText,dob:searchText,
-            phoneNumber:searchText,email:searchText,address:searchText,
-            createdDate:searchText,doctorName:searchText,diagnosis:searchText}; let i=index;">
-          <td>{{item.patientId}}</td>
-          <td>{{item.patientName}}</td>
+        <tr *ngFor="let item of pagedItems | patientfilter: {id: searchText, 
+            patientName:searchText,gender:searchText,phoneNumber:searchText,
+            specialization:searchText}; let i=index;">
+          <td>{{item.id}}</td>
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
           <td>{{item.gender}}</td>
-          <td>{{item.dob}}</td>
           <td>{{item.phoneNumber}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.createdDate}}</td>
-          <td><img src="./assets/diagnosis.png"/></td>
+          <td>{{item.specialization}}</td>
+          <!--<td>{{item.createdDate}}</td>-->
+          <td>
+            <img name="Diagnosis" width="15" class="pointer" src="./assets/diagnosis.png"/>
+            <img name="Edit" width="14" class="pointer" src="./assets/edit.png" />
+            <img name="Delete" width="15" class="pointer" src="./assets/delete.png"/>
+         </td>
       </tbody>
     </table>
     <div class="container">   

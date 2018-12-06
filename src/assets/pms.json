@@ -12,7 +12,8 @@
       "address": "Salem",
       "specialization": "General",
       "doctorName": "Gunasekaran",
-      "diagnosis": "Vertigo","createdDate": "2018-12-06"
+      "diagnosis": "Vertigo",
+      "createdDate": "2018-12-06"
     },
     {
       "id": 4,
@@ -7453,6 +7454,16 @@
       "doctorName": "Senthil",
       "diagnosis": "Stomach Pain",
       "createdDate": "2018-12-06"
+    }
+  ],
+  "doctorList": [
+    {
+      "firstName": "Gunasekaran",
+      "lastName": "K",
+      "gender": "Male",
+      "phoneNumber": "0325698742",
+      "specialization": "General",
+      "id": 1
     }
   ]
 }

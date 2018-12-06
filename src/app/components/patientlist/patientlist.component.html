@@ -1,8 +1,23 @@
-<p></p>
+<h6 class="pb-2 mb-0">Patient Informations</h6>
 <div class="container-fluid">
 <div class="row">
-    <h6 class="pb-2 mb-0">Patient Informations</h6>
-    <input [(ngModel)]="searchText" placeholder="Search" class="form-control mr-sm-2">
+    <div class="row">
+            <br>
+            <table>
+                <tr>
+                    <td><label style="margin-right: 10px;margin-left: 10px">Show</label></td>
+                    <td><select id="noOfItemsId" class="form-control" name="noOfItems" (change)="changeNoOfItemsShowPerPage($event)">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                        <option>25</option>
+                    </select></td>
+                    <td><label style="margin-right: 10px">Items</label></td>
+                    <td><input [(ngModel)]="searchText" placeholder="Search" class="form-control mr-sm-2"></td>
+                </tr>
+            </table>
+        </div>
 </div>
 <p></p>
     <table class="table table-bordered table-sm">

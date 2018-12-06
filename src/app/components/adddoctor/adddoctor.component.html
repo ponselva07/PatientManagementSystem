@@ -3,77 +3,69 @@
         <div class="row">
             <div class="col-md-10">
                 <h3>Add New Doctor</h3>
-                <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
-                <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
-                        <!--<div class="row">
-                                <label for="firstName">First Name</label>
-                                <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
-                                <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-                                    <div *ngIf="firstName.errors.required">First Name is required</div>
+                <br>
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input id="firstNameText" type="text" formControlName="firstName" 
+                                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                    </div>
                                 </div>
-                            </div>-->
-                    <div class="row">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" name="firstName" ngModel #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
-                        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-                            <div *ngIf="firstName.errors.required">First Name is required</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" name="lastName" ngModel #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
-                        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
-                            <div *ngIf="lastName.errors.required">Last Name is required</div>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <label for="gender" style="margin-right: 2%">Gender</label>
-                        <select class="form-control" name="gender" ngModel #gender="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gender.invalid }" required>
-                                <option>Male</option>
-                                <option>Female</option>
-                        </select>
-                        <div *ngIf="f.submitted && gender.invalid" class="invalid-feedback">
-                            <div *ngIf="gender.errors.required">Gender is required</div>
-                        </div>
-                    </div>
-                    <!--<div class="row">
-                      <div class="form-check" style="margin-right: 2%">
-                        <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="gender">Male
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="gender">Female
-                        </label>
-                      </div>
-                    </div>-->
-                    <div class="row">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="text" class="form-control" name="phoneNumber" ngModel #phoneNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phoneNumber.invalid }" required email />
-                        <div *ngIf="f.submitted && phoneNumber.invalid" class="invalid-feedback">
-                            <div *ngIf="phoneNumber.errors.required">Phone Number is required</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="specialization" style="margin-right: 2%">Specialization</label>
-                        <select class="form-control" name="specialization" ngModel #specialization="ngModel" [ngClass]="{ 'is-invalid': f.submitted && specialization.invalid }" required>
-                                <option>General</option>
-                                <option>Pediatrician</option>
-                                <option>Gynecologist</option>
-                                <option>Neurologist</option>
-                        </select>
-                        <div *ngIf="f.submitted && specialization.invalid" class="invalid-feedback">
-                            <div *ngIf="specialization.errors.required">Specialization is required</div>
-                        </div>
-                    </div>
-                       <div class="form-group">
-                        <br/>
-                        <button class="btn btn-primary">Add</button>
-                    </div>
-                </form>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input id="lastNameText" type="text" formControlName="lastName" class="form-control" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Gender</label>
+                                    <select id="genderList" class="form-control" formControlName="gender" 
+                                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                                        <div *ngIf="f.gender.errors.required">Gender is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phoneNumber">Phone Number</label>
+                                    <input id="phoneNumberText" type="text" formControlName="phoneNumber" class="form-control" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+                                    <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                                        <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="specialization">Specialization</label>
+                                    <select id="specializationList" class="form-control" formControlName="specialization" 
+                                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.specialization.errors }">
+                                            <option>General</option>
+                                            <option>Pediatrician</option>
+                                            <option>Gynecologist</option>
+                                            <option>Neurologist</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.specialization.errors" class="invalid-feedback">
+                                        <div *ngIf="f.specialization.errors.required">Specialization is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button id="signinSubmit" [disabled]="loading" class="btn btn-primary">Add Doctor</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
 </div>
+
+    

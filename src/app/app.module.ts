@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MustMatchDirective } from './directives/MustMatchDirective';
 import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-adddoctor',
@@ -8,13 +11,38 @@ import { NgForm } from '@angular/forms';
 })
 export class AdddoctorComponent implements OnInit {
 
-  constructor() { }
+  doctorForm: FormGroup;
+  loading = false;
+  submitted = false;
+  
+  constructor(private route: ActivatedRoute,private router:Router,
+    private formBuilder: FormBuilder,private doctorService:DoctorService) { }
 
   ngOnInit() {
+    this.doctorForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      gender: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      specialization: ['', Validators.required]
+    });
   }
 
+  get f() { return this.doctorForm.controls; }
+
   onSubmit(doctorForm:NgForm){
-    console.log(doctorForm.value);
+    this.submitted = true;
+    if (this.doctorForm.invalid) {
+        return;
+    }
+    this.doctorService.addDoctor(this.doctorForm.value).subscribe(
+      data => {
+        console.log("Doctor Added Successfully");
+      },
+      (err: HttpErrorResponse) => {
+        console.log (err.message);
+      }
+    );
   }
 
 }

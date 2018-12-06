@@ -36,7 +36,7 @@ export class PatientlistComponent implements OnInit {
       this.patientList.subscribe(
       data => {
         this.allItems = data as IPatient [];
-        this.setPage(0);
+        this.setPage(0,0);
       },
       (err: HttpErrorResponse) => {
         console.log (err.message);
@@ -44,14 +44,17 @@ export class PatientlistComponent implements OnInit {
     );
   }
 
-  setPage(page: number) {
+  setPage(page: number,pageSize:number) {
     // get pager object from service
-    this.pager = this.patientService.getPager(this.allItems.length, page);
+    this.pager = this.patientService.getPager(this.allItems.length, page,pageSize);
 
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 }
 
+diagnosisPatient(patient:IPatient){
+
+}
 editPatient(patient:IPatient){
   /*let navigationExtras: NavigationExtras = {
     queryParams: {
@@ -73,5 +76,10 @@ deletePatient(patient:IPatient){
               console.log("Error : ", error);
           }
       );
+}
+
+changeNoOfItemsShowPerPage(event: any){
+  this.setPage(0,event.target.value);
+
 }
 }
