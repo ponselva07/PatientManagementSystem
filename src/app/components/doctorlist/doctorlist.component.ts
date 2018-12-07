@@ -14,7 +14,7 @@ export class DoctorlistComponent implements OnInit {
   constructor(private httpClient: HttpClient, private patientService: PatientService) { }
 
   private doctorList : Observable<IDoctor[]>;
-
+  private defaultNoOfItems:number;
   // array of all items to be paged
   allItems: IDoctor[];
 
@@ -25,6 +25,7 @@ export class DoctorlistComponent implements OnInit {
   pagedItems: any[];
 
   ngOnInit() {
+      this.defaultNoOfItems=10;
      // get dummy data
      this.doctorList = this.httpClient.get<IDoctor[]>("http://localhost:3000/doctorList");
 
@@ -32,7 +33,7 @@ export class DoctorlistComponent implements OnInit {
      this.doctorList.subscribe(
       data => {
         this.allItems = data as IDoctor [];
-        this.setPage(0,0);
+        this.setPage(0);
       },
       (err: HttpErrorResponse) => {
         console.log (err.message);
@@ -40,11 +41,20 @@ export class DoctorlistComponent implements OnInit {
     );
   }
 
-  setPage(page: number,pageSize:number) {
+  setPage(page: number) {
     // get pager object from service
-    this.pager = this.patientService.getPager(this.allItems.length, page,pageSize);
+    this.pager = this.patientService.getPager(this.allItems.length, page,this.defaultNoOfItems);
 
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+}
+changeNoOfItemsShowPerPage(event: any){
+  this.defaultNoOfItems=event.target.value;
+  this.setPage(0);
+
+}
+
+editDoctorInformation(){
+  
 }
 }

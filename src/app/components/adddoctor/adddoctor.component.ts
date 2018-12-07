@@ -38,6 +38,7 @@ export class AdddoctorComponent implements OnInit {
     this.doctorService.addDoctor(this.doctorForm.value).subscribe(
       data => {
         console.log("Doctor Added Successfully");
+        this.router.navigate(['/doctorList']);
       },
       (err: HttpErrorResponse) => {
         console.log (err.message);

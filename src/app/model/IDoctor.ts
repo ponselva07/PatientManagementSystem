@@ -5,5 +5,5 @@ export interface IDoctor{
 	gender:string;
 	phoneNumber:number;
 	specialization:string;
-	createdDate:string;
+	createdDate:Date;
 }

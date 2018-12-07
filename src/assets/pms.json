@@ -1,36 +1,6 @@
 {
   "patientList": [
     {
-      "id": 3,
-      "firstName": "Adripathi ",
-      "lastName": "A",
-      "dob": "1991-12-30",
-      "gender": "Male",
-      "phoneNumber": 9845245339,
-      "email": "Adripathi@gmail.com",
-      "bloodGroup": "B Positive",
-      "address": "Salem",
-      "specialization": "General",
-      "doctorName": "Gunasekaran",
-      "diagnosis": "Vertigo",
-      "createdDate": "2018-12-06"
-    },
-    {
-      "id": 4,
-      "firstName": "Adwaita ",
-      "lastName": "T",
-      "dob": "1987-12-28",
-      "gender": "Male",
-      "phoneNumber": 9845223205,
-      "email": "Adwaita@gmail.com",
-      "bloodGroup": "O Positive",
-      "address": "Chennai",
-      "specialization": "Pediatrician",
-      "doctorName": "Gunasekaran",
-      "diagnosis": "Dizziness",
-      "createdDate": "2018-12-06"
-    },
-    {
       "id": 5,
       "firstName": "Adway ",
       "lastName": "P",
@@ -7464,6 +7434,46 @@
       "phoneNumber": "0325698742",
       "specialization": "General",
       "id": 1
+    },
+    {
+      "firstName": "Kumar",
+      "lastName": "R",
+      "gender": "Male",
+      "phoneNumber": "1236547890",
+      "specialization": "Gynecologist",
+      "id": 2
+    },
+    {
+      "firstName": "Mathimaran",
+      "lastName": "P",
+      "gender": "Male",
+      "phoneNumber": "9856472130",
+      "specialization": "Pediatrician",
+      "id": 3
+    },
+    {
+      "firstName": "Geetha",
+      "lastName": "Lakshmipathy",
+      "gender": "Female",
+      "phoneNumber": "9865231470",
+      "specialization": "Neurologist",
+      "id": 4
+    },
+    {
+      "firstName": "Saravanan",
+      "lastName": "B.N",
+      "gender": "Male",
+      "phoneNumber": "8523697412",
+      "specialization": "General",
+      "id": 5
+    },
+    {
+      "firstName": "Prakash",
+      "lastName": "Chand Jain",
+      "gender": "Male",
+      "phoneNumber": "7896541236",
+      "specialization": "Gynecologist",
+      "id": 6
     }
   ]
 }

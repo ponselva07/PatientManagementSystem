@@ -11,5 +11,5 @@ export interface IPatient{
 	specialization:string;
 	doctorName:string;
 	diagnosis:string;
-	createdDate:string;
+	createdDate:Date;
 }

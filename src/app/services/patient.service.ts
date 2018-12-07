@@ -9,9 +9,6 @@ export class PatientService {
 
   getPager(totalItems: number, currentPage: number = 1, pageSize: number) {
     // calculate total pages
-    if(pageSize <=0 || pageSize == null || pageSize == undefined){
-        pageSize=10;
-    }
     let totalPages = Math.ceil(totalItems / pageSize);
 
     // ensure current page isn't out of range
@@ -42,8 +39,8 @@ export class PatientService {
 
     // calculate start and end item indexes
     let startIndex = (currentPage - 1) * pageSize;
-    let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
-
+    let endIndex = startIndex + (pageSize - 1);//Math.min(startIndex + pageSize - 1, totalItems - 1);
+    let endIndex1 = Math.min(startIndex + pageSize - 1, totalItems - 1);
     // create an array of pages to ng-repeat in the pager control
     let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
 

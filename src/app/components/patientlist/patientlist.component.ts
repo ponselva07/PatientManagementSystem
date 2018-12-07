@@ -16,6 +16,8 @@ export class PatientlistComponent implements OnInit {
   constructor(private httpClient: HttpClient, private router:Router, private patientService: PatientService) { }
 
   private patientList : Observable<IPatient[]>;
+
+  private defaultNoOfItems:number;
   // array of all items to be paged
   allItems: IPatient[];
 
@@ -29,6 +31,7 @@ export class PatientlistComponent implements OnInit {
      // get data from json server 
      // install json server : npm install -g json-server
      // run command for json server : json-server --watch pms.json 
+     this.defaultNoOfItems=10;
      this.patientList = this.httpClient
             .get<IPatient[]>("http://localhost:3000/patientList");
             //.do(console.log); 
@@ -36,7 +39,7 @@ export class PatientlistComponent implements OnInit {
       this.patientList.subscribe(
       data => {
         this.allItems = data as IPatient [];
-        this.setPage(0,0);
+        this.setPage(0);
       },
       (err: HttpErrorResponse) => {
         console.log (err.message);
@@ -44,9 +47,9 @@ export class PatientlistComponent implements OnInit {
     );
   }
 
-  setPage(page: number,pageSize:number) {
+  setPage(page: number) {
     // get pager object from service
-    this.pager = this.patientService.getPager(this.allItems.length, page,pageSize);
+    this.pager = this.patientService.getPager(this.allItems.length, page,this.defaultNoOfItems);
 
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
@@ -79,7 +82,8 @@ deletePatient(patient:IPatient){
 }
 
 changeNoOfItemsShowPerPage(event: any){
-  this.setPage(0,event.target.value);
+  this.defaultNoOfItems=event.target.value;
+  this.setPage(0);
 
 }
 }

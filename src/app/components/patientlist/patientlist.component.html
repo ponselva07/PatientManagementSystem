@@ -6,14 +6,14 @@
             <table>
                 <tr>
                     <td><label style="margin-right: 10px;margin-left: 10px">Show</label></td>
-                    <td><select id="noOfItemsId" class="form-control" name="noOfItems" (change)="changeNoOfItemsShowPerPage($event)">
+                    <td><select id="noOfItemsId" class="form-control" name="noOfItems" [(ngModel)]="defaultNoOfItems" (change)="changeNoOfItemsShowPerPage($event)">
                         <option>5</option>
                         <option>10</option>
                         <option>15</option>
                         <option>20</option>
                         <option>25</option>
                     </select></td>
-                    <td><label style="margin-right: 10px">Items</label></td>
+                    <td><label style="margin-right: 10px;margin-left: 10px">Items</label></td>
                     <td><input [(ngModel)]="searchText" placeholder="Search" class="form-control mr-sm-2"></td>
                 </tr>
             </table>

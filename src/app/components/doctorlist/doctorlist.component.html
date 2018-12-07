@@ -4,14 +4,14 @@
     <table>
         <tr>
             <td><label style="margin-right: 10px;margin-left: 10px">Show</label></td>
-            <td><select class="form-control" name="noOfItems" (change)="changeNoOfItemsShowPerPage()">
+            <td><select class="form-control" name="noOfItems" [(ngModel)]="defaultNoOfItems" (change)="changeNoOfItemsShowPerPage($event)">
                 <option>5</option>
                 <option>10</option>
                 <option>15</option>
                 <option>20</option>
                 <option>25</option>
             </select></td>
-            <td><label style="margin-right: 10px">Items</label></td>
+            <td><label style="margin-right: 10px;margin-left: 10px">Items</label></td>
             <td><input [(ngModel)]="searchText" placeholder="Search" class="form-control mr-sm-2"></td>
         </tr>
     </table>
@@ -37,7 +37,7 @@
         <!--<tr *ngFor="let item of pagedItems | patientfilter: {patientId: searchText, 
             patientName:searchText}; let i=index;">-->
         <tr *ngFor="let item of pagedItems | patientfilter: {id: searchText, 
-            patientName:searchText,gender:searchText,phoneNumber:searchText,
+            firstName:searchText,lastName:searchText,gender:searchText,phoneNumber:searchText,
             specialization:searchText}; let i=index;">
           <td>{{item.id}}</td>
           <td>{{item.firstName}}</td>
@@ -47,7 +47,6 @@
           <td>{{item.specialization}}</td>
           <!--<td>{{item.createdDate}}</td>-->
           <td>
-            <img name="Diagnosis" width="15" class="pointer" src="./assets/diagnosis.png"/>
             <img name="Edit" width="14" class="pointer" src="./assets/edit.png" />
             <img name="Delete" width="15" class="pointer" src="./assets/delete.png"/>
          </td>
