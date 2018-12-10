@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IPatient } from 'src/app/model/IPatient';
 import { HttpClient } from '@angular/common/http';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-addpatient',
@@ -11,15 +12,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddpatientComponent implements OnInit {
   patient:IPatient;
+  patientId:string;
+  btnLable:string="Add Patient";
   constructor(private route: ActivatedRoute,private httpClient:HttpClient,
-    private router:Router) { 
+    private router:Router,private patientService:PatientService) { 
       /*this.route.queryParams.subscribe(params => {
       this.patient = JSON.parse(params["patient"]) as IPatient;*});*/
   }
 
   ngOnInit() {
-    if(sessionStorage.getItem("patient") !== "null"){
-      this.patient = JSON.parse(sessionStorage.getItem("patient")) as IPatient;
+    this.patientId = this.route.snapshot.paramMap.get("id");
+    if(this.patientId !== null){
+      this.patientService.getPatientInformation(this.patientId)
+      .subscribe(
+        data => {
+            this.patient=data;
+          },
+        error => {
+            console.log("Error : ", error);
+        }
+    );
+      this.btnLable="Update Patient";
     }else{
       this.patient={} as IPatient;
     }
@@ -27,7 +40,6 @@ export class AddpatientComponent implements OnInit {
 
   onSubmit(regForm:NgForm){
     this.patient=regForm.value as IPatient;
-    console.log("regForm.value "+regForm.value);
     if(this.patient.id <= 0 || this.patient.id == undefined){
       this.patient.createdDate=new Date();
       this.httpClient.post("http://127.0.0.1:3000/patientList",this.patient)
@@ -57,6 +69,7 @@ export class AddpatientComponent implements OnInit {
   }
 
   clearPatient(){
-    sessionStorage.setItem("patient",null)
+    this.btnLable="Add Patient";
+    this.patient={} as IPatient;
   }
 }

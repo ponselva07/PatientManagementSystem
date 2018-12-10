@@ -56,21 +56,20 @@ export class PatientlistComponent implements OnInit {
 }
 
 diagnosisPatient(patient:IPatient){
-
+    console.log(patient.firstName);
 }
-editPatient(patient:IPatient){
+editPatient(id:number){
   /*let navigationExtras: NavigationExtras = {
     queryParams: {
         "patient": JSON.stringify(patient),
     }
 };
   this.router.navigate(['/addPatient'],navigationExtras);*/
-  sessionStorage.setItem("patient",JSON.stringify(patient));
-  this.router.navigate(['/addPatient']);
+  this.router.navigate(['/addPatient',id]);
 }
 
-deletePatient(patient:IPatient){
-  this.httpClient.delete("http://127.0.0.1:3000/patientList/"+patient.id)
+deletePatient(id:number){
+  this.httpClient.delete("http://127.0.0.1:3000/patientList/"+id)
       .subscribe(
           data => {
               console.log("Patient Information Deleted Succussfully ", data);

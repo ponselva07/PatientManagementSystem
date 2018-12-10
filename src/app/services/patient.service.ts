@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IPatient } from '../model/IPatient';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
 
-  constructor() { }
+  constructor(private httpClient:HttpClient) { }
+
+  public getPatientInformation(id:string):Observable<IPatient>{
+    let patient:IPatient;
+    //debugger;
+    return this.httpClient.get<IPatient>("http://127.0.0.1:3000/patientList/" + id);
+  }
 
   getPager(totalItems: number, currentPage: number = 1, pageSize: number) {
     // calculate total pages

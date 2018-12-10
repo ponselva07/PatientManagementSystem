@@ -13,7 +13,7 @@ import { IDoctor } from 'src/app/model/IDoctor';
 export class AdddoctorComponent implements OnInit {
 
   doctorForm: FormGroup;
-  doctor: IDoctor={} as IDoctor;
+  doctor: IDoctor;
   loading = false;
   submitted = false;
   isUpdate:boolean=false;
@@ -52,6 +52,8 @@ export class AdddoctorComponent implements OnInit {
         }
     );
       this.btnLable="Update Doctor";
+    }else{
+      this.doctor={} as IDoctor;
     }
   }
 
@@ -75,6 +77,7 @@ export class AdddoctorComponent implements OnInit {
 
   reset(){
     this.btnLable="Add Doctor";
+    this.doctor={} as IDoctor;
   }
 
 }

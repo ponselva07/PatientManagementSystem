@@ -63,9 +63,9 @@
           <td>{{item.diagnosis}}</td>
           <td>{{item.createdDate}}</td>
           <td>
-              <img name="Diagnosis" width="15" class="pointer" src="./assets/diagnosis.png"/>
-              <img name="Edit" width="14" class="pointer" src="./assets/edit.png" (click)="editPatient(item)" />
-              <img name="Delete" width="15" class="pointer" src="./assets/delete.png" (click)="deletePatient(item)"/>
+              <img name="Diagnosis" width="15" class="pointer" src="./assets/diagnosis.png" (click)="diagnosisPatient(item)"/>
+              <img name="Edit" width="14" class="pointer" src="./assets/edit.png" (click)="editPatient(item.id)" />
+              <img name="Delete" width="15" class="pointer" src="./assets/delete.png" (click)="deletePatient(item.id)"/>
            </td>
           <!--<td>{{employee.createdAt | date:'yyyy/MM/dd'}}</td>
           <td>

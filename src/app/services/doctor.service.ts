@@ -17,7 +17,7 @@ export class DoctorService {
     if(doctor.id > 0){
       console.log(console.log("Update Doctor : "+doctor.id));
       console.log(console.log("Update Doctor Name : "+doctor.firstName));
-      return this.httpClient.put<IDoctor>("http://127.0.0.1:3000/doctorList",doctor);
+      return this.httpClient.put<IDoctor>("http://127.0.0.1:3000/doctorList/"+doctor.id,doctor);
     }else{
       console.log(console.log("Add Doctor : "+doctor.id));
       return this.httpClient.post<IDoctor>("http://127.0.0.1:3000/doctorList",doctor);
