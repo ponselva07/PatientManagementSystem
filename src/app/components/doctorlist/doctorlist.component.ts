@@ -3,6 +3,7 @@ import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { PatientService } from 'src/app/services/patient.service';
 import { IDoctor } from 'src/app/model/IDoctor';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctorlist',
@@ -11,7 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class DoctorlistComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient, private patientService: PatientService) { }
+  constructor(private httpClient: HttpClient, private patientService: PatientService,
+    private router:Router) { }
 
   private doctorList : Observable<IDoctor[]>;
   private defaultNoOfItems:number;
@@ -54,7 +56,19 @@ changeNoOfItemsShowPerPage(event: any){
 
 }
 
-editDoctorInformation(){
-  
+editDoctorInformation(id:number){
+  this.router.navigate(['/addDoctor',id]);
+}
+
+deleteDoctorInformation(id:number){
+  this.httpClient.delete("http://127.0.0.1:3000/doctorList/"+id)
+      .subscribe(
+          data => {
+              console.log("Doctor Information Deleted Succussfully ", data);
+          },
+          error => {
+              console.log("Error : ", error);
+          }
+      );
 }
 }

@@ -47,8 +47,8 @@
           <td>{{item.specialization}}</td>
           <!--<td>{{item.createdDate}}</td>-->
           <td>
-            <img name="Edit" width="14" class="pointer" src="./assets/edit.png" />
-            <img name="Delete" width="15" class="pointer" src="./assets/delete.png"/>
+            <img name="Edit" width="14" class="pointer" src="./assets/edit.png" (click)="editDoctorInformation(item.id)"/>
+            <img name="Delete" width="15" class="pointer" src="./assets/delete.png" (click)="deleteDoctorInformation(item.id)"/>
          </td>
       </tbody>
     </table>

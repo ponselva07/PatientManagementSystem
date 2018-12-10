@@ -18,8 +18,10 @@ export class AddpatientComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(sessionStorage.getItem("patient") != null){
+    if(sessionStorage.getItem("patient") !== "null"){
       this.patient = JSON.parse(sessionStorage.getItem("patient")) as IPatient;
+    }else{
+      this.patient={} as IPatient;
     }
   }
 
@@ -27,6 +29,7 @@ export class AddpatientComponent implements OnInit {
     this.patient=regForm.value as IPatient;
     console.log("regForm.value "+regForm.value);
     if(this.patient.id <= 0 || this.patient.id == undefined){
+      this.patient.createdDate=new Date();
       this.httpClient.post("http://127.0.0.1:3000/patientList",this.patient)
       .subscribe(
           data => {

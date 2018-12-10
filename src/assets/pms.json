@@ -1,21 +1,6 @@
 {
   "patientList": [
     {
-      "id": 5,
-      "firstName": "Adway ",
-      "lastName": "P",
-      "dob": "1995-01-01",
-      "gender": "Male",
-      "phoneNumber": 9845260390,
-      "email": "Adway@gmail.com",
-      "bloodGroup": "O Positive",
-      "address": "Chennai",
-      "specialization": "General",
-      "doctorName": "Mathimaran",
-      "diagnosis": "Dizziness",
-      "createdDate": "2018-12-06"
-    },
-    {
       "id": 7,
       "firstName": "Aftab",
       "lastName": "V",
@@ -7474,6 +7459,14 @@
       "phoneNumber": "7896541236",
       "specialization": "Gynecologist",
       "id": 6
+    },
+    {
+      "firstName": "Priyanka",
+      "lastName": "R",
+      "gender": "Female",
+      "phoneNumber": "99865231470",
+      "specialization": "General",
+      "id": 7
     }
   ]
 }
