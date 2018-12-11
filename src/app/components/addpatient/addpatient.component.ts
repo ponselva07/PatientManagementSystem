@@ -12,17 +12,18 @@ import { PatientService } from 'src/app/services/patient.service';
 })
 export class AddpatientComponent implements OnInit {
   patient:IPatient;
-  patientId:string;
+  patientId:number;
   btnLable:string="Add Patient";
   constructor(private route: ActivatedRoute,private httpClient:HttpClient,
     private router:Router,private patientService:PatientService) { 
+      this.patient={} as IPatient;
       /*this.route.queryParams.subscribe(params => {
       this.patient = JSON.parse(params["patient"]) as IPatient;*});*/
   }
 
   ngOnInit() {
-    this.patientId = this.route.snapshot.paramMap.get("id");
-    if(this.patientId !== null){
+    this.patientId = parseInt(this.route.snapshot.paramMap.get("id"));
+    if(this.patientId > 0){
       this.patientService.getPatientInformation(this.patientId)
       .subscribe(
         data => {
@@ -33,14 +34,14 @@ export class AddpatientComponent implements OnInit {
         }
     );
       this.btnLable="Update Patient";
-    }else{
-      this.patient={} as IPatient;
     }
   }
 
   onSubmit(regForm:NgForm){
+    let createdDate=this.patient.createdDate;
     this.patient=regForm.value as IPatient;
-    if(this.patient.id <= 0 || this.patient.id == undefined){
+    console.log("Patient Id : "+this.patient.id);
+    if(this.patientId <= 0 || this.patientId == undefined){
       this.patient.createdDate=new Date();
       this.httpClient.post("http://127.0.0.1:3000/patientList",this.patient)
       .subscribe(
@@ -52,6 +53,13 @@ export class AddpatientComponent implements OnInit {
           }
       );
     }else{
+      this.patient.id=this.patientId;
+      this.patient.updatedDate=new Date();
+      if(createdDate == null || createdDate == undefined){
+        this.patient.createdDate=this.patient.updatedDate;
+      }else{
+        this.patient.createdDate=createdDate;
+      }
       this.httpClient.put("http://127.0.0.1:3000/patientList/"+this.patient.id,
       this.patient
       )
@@ -70,6 +78,5 @@ export class AddpatientComponent implements OnInit {
 
   clearPatient(){
     this.btnLable="Add Patient";
-    this.patient={} as IPatient;
   }
 }

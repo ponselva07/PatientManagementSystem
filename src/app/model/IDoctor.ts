@@ -6,4 +6,5 @@ export interface IDoctor{
 	phoneNumber:number;
 	specialization:string;
 	createdDate:Date;
+	updatedDate:Date;
 }

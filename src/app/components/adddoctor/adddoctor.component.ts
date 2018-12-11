@@ -64,7 +64,7 @@ export class AdddoctorComponent implements OnInit {
     if (this.doctorForm.invalid) {
         return;
     }
-    this.doctorService.addDoctor(this.doctorForm.value,this.doctorId).subscribe(
+    this.doctorService.addDoctor(this.doctorForm.value,this.doctorId,this.doctor.createdDate).subscribe(
       data => {
         console.log("Doctor Added Successfully");
         this.router.navigate(['/doctorList']);

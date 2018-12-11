@@ -10,7 +10,7 @@ export class PatientService {
 
   constructor(private httpClient:HttpClient) { }
 
-  public getPatientInformation(id:string):Observable<IPatient>{
+  public getPatientInformation(id:number):Observable<IPatient>{
     let patient:IPatient;
     //debugger;
     return this.httpClient.get<IPatient>("http://127.0.0.1:3000/patientList/" + id);

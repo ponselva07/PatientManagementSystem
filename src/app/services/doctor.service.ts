@@ -10,16 +10,20 @@ export class DoctorService {
 
   constructor(private httpClient:HttpClient) { }
 
-  public addDoctor(doctor:IDoctor,doctorId:string):Observable<IDoctor>{
+  public addDoctor(doctor:IDoctor,doctorId:string,createdDate:Date):Observable<IDoctor>{
     if(doctorId != null){
       doctor.id=parseInt(doctorId);
     }
     if(doctor.id > 0){
-      console.log(console.log("Update Doctor : "+doctor.id));
-      console.log(console.log("Update Doctor Name : "+doctor.firstName));
+      doctor.updatedDate=new Date();
+      if(createdDate == null || createdDate == undefined){
+        doctor.createdDate=doctor.updatedDate;
+      }else{
+        doctor.createdDate=createdDate;
+      }
       return this.httpClient.put<IDoctor>("http://127.0.0.1:3000/doctorList/"+doctor.id,doctor);
     }else{
-      console.log(console.log("Add Doctor : "+doctor.id));
+      doctor.createdDate=new Date();
       return this.httpClient.post<IDoctor>("http://127.0.0.1:3000/doctorList",doctor);
     }
   }

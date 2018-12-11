@@ -2,7 +2,7 @@ export interface IPatient{
     id:number;
 	firstName:string;
 	lastName:string;
-	dob:string;
+	dob:Date;
 	gender:string;
 	phoneNumber:number;
 	email:string;
@@ -12,4 +12,5 @@ export interface IPatient{
 	doctorName:string;
 	diagnosis:string;
 	createdDate:Date;
+	updatedDate:Date;
 }
